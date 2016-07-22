@@ -2,13 +2,13 @@ import java.util.Random;
 
 public class MineMap {
 	
-	private short mapHeight, mapWidth;	//maps height and weight, can be defined by users.
+	private int mapHeight, mapWidth;	//maps height and weight, can be defined by users.
 	private int mineNum;				//the number of mines in the map
-	private short map[][];				//the map
+	private int map[][];				//the map
 	
 	private Random rnd;
 	
-	MineMap(short height, short width, short num){
+	MineMap(int height, int width, int num){
 		rnd = new Random();
 		resetMap(height, width, num);
 		
@@ -18,7 +18,7 @@ public class MineMap {
 		return mapHeight;
 	}
 
-	public void setMapHeight(short mapHeight) {
+	public void setMapHeight(int mapHeight) {
 		this.mapHeight = mapHeight;
 	}
 
@@ -26,7 +26,7 @@ public class MineMap {
 		return mapWidth;
 	}
 
-	public void setMapWidth(short mapWidth) {
+	public void setMapWidth(int mapWidth) {
 		this.mapWidth = mapWidth;
 	}
 
@@ -38,15 +38,15 @@ public class MineMap {
 		this.mineNum = mineNum;
 	}
 
-	public short[][] getMap() {
+	public int[][] getMap() {
 		return map;
 	}
 
-	public void resetMap(short height, short width, short num){
+	public void resetMap(int height, int width, int num){
 		this.mapHeight = height;
 		this.mapWidth = width;
 		this.mineNum = num;
-		map = new short[mapHeight+2][mapWidth+2];
+		map = new int[mapHeight+2][mapWidth+2];
 		
 		randomMap();
 	}
@@ -60,8 +60,8 @@ public class MineMap {
 			row = rnd.nextInt(mapHeight - 1) + 1;
 			col = rnd.nextInt(mapWidth - 1) + 1;
 			
-			if(map[row][col] != 'O'){
-				map[row][col] = 'O';
+			if(map[row][col] != '*'){
+				map[row][col] = '*';
 				setHint(row, col);
 				count++;
 			}
@@ -73,7 +73,7 @@ public class MineMap {
 	public void setHint(int row, int col){
 		for(int i=row-1; i<=row+1; i++){
 			for(int j=col-1; j<=col+1; j++){
-				if(map[i][j] != 'O'){
+				if(map[i][j] != '*'){
 					map[i][j]++;
 				}
 			}
@@ -81,12 +81,22 @@ public class MineMap {
 	}
 	
 	public void prettyPrint(){
-		for(int i=1; i<=mapHeight; i++){
-			for(int j=1; j<=mapWidth; j++){
-				System.out.print(map[i][j] + "\t");
-			}
-			System.out.println();
+		for(int i=0; i<=mapWidth; i++){
+			System.out.print(i + "\t");
 		}
+		
+		for(int i=1; i<=mapHeight; i++){
+			System.out.println();
+			System.out.print(i + "\t");
+			for(int j=1; j<=mapWidth; j++){
+				if(map[i][j] != '*'){
+					System.out.print(map[i][j] + "\t");
+				}else{
+					System.out.print((char)map[i][j] + "\t");
+				}
+			}
+		}
+		System.out.println();
 	}
 	
 	
