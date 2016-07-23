@@ -128,7 +128,7 @@ public class core {
 			return false;
 	}
 	
-	public boolean getMine(){
+	public boolean isMine(){
 		return this.mine;
 	}
 	

@@ -55,6 +55,8 @@ public class ConsoleGame extends core{
 		while(start){
 			start = false;
 			input = "";
+			
+			//input for the necessary value from user
 			while(input.length() == 0 || !isValidMap(height, width, num)){
 				
 				System.out.println("Please input height and width of map and number of mines here:");
@@ -83,13 +85,17 @@ public class ConsoleGame extends core{
 			
 			System.out.println("\n======================================================================================================\n");
 			
+			//create game map
 			resetGame(height, width, num);
 			prettyPrint();
 			
-			while(!getMine()){
+			//game start
+			while(!isMine()){
 				input = "";
 				int row = 0;
 				int col = 0;
+				
+				//input the block that user want to sweep
 				while(input.length() == 0 || !isValidAction(row, col)){
 					
 					System.out.println("Please input the row and colomn of map that you want to sweep:");
@@ -119,7 +125,7 @@ public class ConsoleGame extends core{
 					break;
 				}
 			}
-			if(getMine()){
+			if(isMine()){
 				System.out.println("Sorry. You failed.");
 				System.out.println("\n======================================================================================================\n");
 
