@@ -20,7 +20,7 @@ public class core {
 	//user sweeps a block and check the cases
 	public void sweepMine(int row, int col){
 		
-		if(map.getMap()[row][col] == 'O'){
+		if(map.getMap()[row][col] == 'X'){
 			//when there is mine, game is failed   -------case for failure
 			mine = true;
 			

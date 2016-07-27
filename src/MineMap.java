@@ -60,8 +60,8 @@ public class MineMap {
 			row = rnd.nextInt(mapHeight - 1) + 1;
 			col = rnd.nextInt(mapWidth - 1) + 1;
 			
-			if(map[row][col] != '*'){
-				map[row][col] = '*';
+			if(map[row][col] != 'X'){
+				map[row][col] = 'X';
 				setHint(row, col);
 				count++;
 			}
@@ -73,7 +73,7 @@ public class MineMap {
 	public void setHint(int row, int col){
 		for(int i=row-1; i<=row+1; i++){
 			for(int j=col-1; j<=col+1; j++){
-				if(map[i][j] != '*'){
+				if(map[i][j] != 'X'){
 					map[i][j]++;
 				}
 			}
@@ -89,7 +89,7 @@ public class MineMap {
 			System.out.println();
 			System.out.print(i + "\t");
 			for(int j=1; j<=mapWidth; j++){
-				if(map[i][j] != '*'){
+				if(map[i][j] != 'X'){
 					System.out.print(map[i][j] + "\t");
 				}else{
 					System.out.print((char)map[i][j] + "\t");

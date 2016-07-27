@@ -129,7 +129,7 @@ public class ConsoleGame extends core{
 				System.out.println("Sorry. You failed.");
 				System.out.println("\n======================================================================================================\n");
 
-				System.out.println(">>>Solution<<<");
+				System.out.println(">>>Mine Map<<<");
 				printMap();
 			}
 			
@@ -164,15 +164,15 @@ public class ConsoleGame extends core{
 
 	public boolean isValidMap(int height, int width, int num){
 		boolean flag = true;
-		if(height<0 || height>99){
+		if(height<=0 || height>99){
 			System.out.println("ERROR: The value of height is invalid. Please input height in 0 and 99!");
 			flag = false;
 		}
-		if(width<0 || width>99){
+		if(width<=0 || width>99){
 			System.out.println("ERROR: The value of width is invalid. Please input height in 0 and 99!");
 			flag = false;
 		}
-		if((num > width * height | num <= 0) && flag){
+		if((num >= width * height | num <= 0) && flag){
 			System.out.println("ERROR: The value of number is invalid. Please input available Mine numbers!");
 			flag = false;
 		}
